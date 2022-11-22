@@ -24,9 +24,11 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            rm -rf cloned || echo "no cloned"
             git clone --depth 1 "https://github.com/wirekang/goqu-playground" "cloned"
-            ./workflows_scripts/run.sh
+            cd cloned || exit 1
+            docker compose up -d
+            cd .. || exit 1
+            rm -rf "cloned"
         env:
-          REPO_URL: "https://github.com/wirekang/goqu-playground"
-          CLONE_DIR_NAME: "cloned"
           NGINX_SERVER_NAME: ${{ secrets.NGINX_SERVER_NAME }}
