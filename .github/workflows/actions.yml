@@ -23,7 +23,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          script: ./workflows_scripts/run.sh
+          script: |
+            git clone --depth 1 "https://github.com/wirekang/goqu-playground" "cloned"
+            ./workflows_scripts/run.sh
         env:
           REPO_URL: "https://github.com/wirekang/goqu-playground"
           CLONE_DIR_NAME: "cloned"
