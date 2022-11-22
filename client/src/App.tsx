@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { ApiRequest, callApi } from "./lib/api";
-import { useDebouncedEffect, useMountEffect } from "@react-hookz/web";
+import { useDebouncedEffect } from "@react-hookz/web";
 import { dialects, examples } from "./lib/constants";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { formatSql } from "./lib/format";
