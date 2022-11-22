@@ -17,6 +17,13 @@ export const syntaxDialectMap: Record<string, string> = {
 };
 
 export const examples: Record<string, ApiRequest> = {
+  SELECT: {
+    dialect: "mysql",
+    before: "",
+    after: "",
+    exp: "",
+    var_name: { db: "" },
+  },
   "simple-insert": {
     dialect: "mysql",
     before: "",

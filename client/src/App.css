@@ -46,21 +46,22 @@
 }
 
 .code {
-  padding: 0 8px;
+  min-height: 100px;
+  height: 300px;
+  border: 1px solid black;
+  resize: vertical;
+  font-size: 0.9rem;
 }
 
 .sql {
   margin: 0;
   padding: 0;
   font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .error {
   color: red;
-  margin: 10px 35px -5px;
+  margin: 10px 8px -5px;
   min-height: 41px;
 }
 
