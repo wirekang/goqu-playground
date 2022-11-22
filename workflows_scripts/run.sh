@@ -1,2 +1,0 @@
-NGINX_SERVER_NAME=$NGINX_SERVER_NAME docker compose up -d
-rm -rf "$CLONE_DIR_NAME"

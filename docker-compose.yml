@@ -21,11 +21,11 @@ services:
     restart: always
     volumes:
       - type: bind
-        source: /etc/letsencrypt/live/${NGINX_SERVER_NAME}/fullchain.pem
+        source: /etc/letsencrypt/live/goqu.install.express/fullchain.pem
         target: /app/cert/fullchain.pem
         read_only: true
       - type: bind
-        source: /etc/letsencrypt/live/${NGINX_SERVER_NAME}/privkey.pem
+        source: /etc/letsencrypt/live/goqu.install.express/privkey.pem
         target: /app/cert/privkey.pem
         read_only: true
     ports:
