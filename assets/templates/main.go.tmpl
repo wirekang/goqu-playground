@@ -1,0 +1,32 @@
+{{- /*gotype: github.com/wirekang/goqu-playground/internal/core.TemplateDot*/ -}}
+package main
+
+import (
+	"database/sql"
+	"fmt"
+
+	"github.com/doug-martin/goqu/v9"
+    _ "github.com/doug-martin/goqu/v9/dialect/mysql"
+    _ "github.com/doug-martin/goqu/v9/dialect/postgres"
+    _ "github.com/doug-martin/goqu/v9/dialect/sqlite3"
+    _ "github.com/doug-martin/goqu/v9/dialect/sqlserver"
+)
+
+
+const dialect = "{{ .Dialect }}"
+
+func main() {
+	{{ .VarName.DB }} := goqu.New(dialect, &sql.DB{})
+	_ = {{ .VarName.DB }}
+
+	{{ .BeforeStatement }}
+	exp := {{ .Expression }}
+	{{ .AfterStatement }}
+
+	sql, _, err := exp.ToSQL()
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Print(sql)
+}

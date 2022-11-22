@@ -1,0 +1,36 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+.header {
+}
+
+.body {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+}
+
+.expression {
+  flex: 1;
+}
+
+.sql {
+  flex: 1;
+  padding: 8px;
+}
+
+.error {
+}
+
+.loading {
+}
