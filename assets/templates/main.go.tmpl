@@ -4,6 +4,8 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"time"
+	"strings"
 
 	"github.com/doug-martin/goqu/v9"
     _ "github.com/doug-martin/goqu/v9/dialect/mysql"
@@ -16,6 +18,9 @@ import (
 const dialect = "{{ .Dialect }}"
 
 func main() {
+	_ = time.Now()
+	_ = strings.Clone("")
+
 	{{ .VarName.DB }} := goqu.New(dialect, &sql.DB{})
 	_ = {{ .VarName.DB }}
 

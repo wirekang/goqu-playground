@@ -17,3 +17,6 @@
 .idea/
 tmp/
 temp.go
+
+
+.env.development

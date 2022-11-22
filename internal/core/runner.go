@@ -9,6 +9,7 @@ import (
 	"path"
 	"strings"
 	"text/template"
+	"time"
 
 	"github.com/samber/lo"
 )
@@ -85,12 +86,17 @@ func (r *Runner) Run(opt RunOption) (sql string, err error) {
 		return
 	}
 
-	err = os.WriteFile("temp.go", buf.Bytes(), 0755)
+	fileName := fmt.Sprintf("%d_temp.go", time.Now().UnixMilli())
+	defer func() {
+		_ = os.Remove(fileName)
+	}()
+
+	err = os.WriteFile(fileName, buf.Bytes(), 0755)
 	if err != nil {
 		return
 	}
 
-	cmd := exec.Command("go", "run", "temp.go")
+	cmd := exec.Command("go", "run", fileName)
 	stdout := &bytes.Buffer{}
 	stderr := &bytes.Buffer{}
 	cmd.Stdout = stdout

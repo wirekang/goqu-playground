@@ -2,6 +2,7 @@ package core
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -17,6 +18,7 @@ func Listen() error {
 		return err
 	}
 
+	gin.SetMode(os.Getenv("GIN_MODE"))
 	e := gin.Default()
 	e.Use(
 		cors.New(
@@ -27,8 +29,13 @@ func Listen() error {
 			},
 		),
 	)
+	e.GET("/", handleGet)
 	e.POST("/", handlePost)
-	return e.Run(":8080")
+	return e.Run()
+}
+
+func handleGet(c *gin.Context) {
+	c.JSON(200, map[string]any{"status": "ok"})
 }
 
 func handlePost(c *gin.Context) {
