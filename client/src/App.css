@@ -81,3 +81,20 @@
 hr {
   width: 100%;
 }
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.version {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.versionName {
+  display: inline-block;
+  width: 50px;
+}

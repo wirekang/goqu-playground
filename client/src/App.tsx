@@ -2,7 +2,12 @@ import "./App.css";
 import { useState } from "react";
 import { ApiRequest, callApi } from "./lib/api";
 import { useDebouncedEffect } from "@react-hookz/web";
-import { dialects, examples } from "./lib/constants";
+import {
+  dialects,
+  examples,
+  golangVersion,
+  goquVersion,
+} from "./lib/constants";
 import { formatSql } from "./lib/format";
 import "prismjs";
 import Editor from "react-simple-code-editor";
@@ -135,7 +140,19 @@ export function App() {
           />
         </div>
       </div>
-      <div className={"loading"}>{isLoading && "LOADING..."}</div>
+      <div className="footer">
+        <div className="loading">{isLoading && "LOADING..."}</div>
+        <div className="version">
+          <div>
+            <span className="versionName">go</span>
+            <span>{golangVersion}</span>
+          </div>
+          <div>
+            <span className="versionName">goqu</span>
+            <span>{goquVersion}</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

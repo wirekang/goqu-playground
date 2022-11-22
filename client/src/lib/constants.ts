@@ -93,3 +93,6 @@ if err != nil {
     var_name: { db: "db" },
   },
 } as const;
+
+export const goquVersion = "9.18.0";
+export const golangVersion = "1.19";
