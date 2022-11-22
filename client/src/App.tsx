@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ApiRequest, callApi } from "./lib/api";
 import { useDebouncedEffect } from "@react-hookz/web";
 import {
@@ -17,10 +17,32 @@ import "prismjs/themes/prism.css";
 import { highlight, languages } from "prismjs";
 
 export function App() {
-  const [req, setReq] = useState<ApiRequest>(examples["SELECT"]);
+  const [req, setReq] = useState<ApiRequest>(() => {
+    try {
+      const params = new URLSearchParams(location.search);
+      const arg = params.get("arg");
+      if (arg == null) {
+        return examples["SELECT"];
+      }
+      return JSON.parse(atob(arg));
+    } catch (e) {
+      console.log(e);
+      return examples["SELECT"];
+    }
+  });
   const [error, setError] = useState("");
   const [sql, setSql] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    params.set("arg", btoa(JSON.stringify(req)));
+    window.history.pushState(
+      {},
+      "",
+      `${window.location.pathname}?${params.toString()}`,
+    );
+  }, [req]);
 
   useDebouncedEffect(
     () => {
