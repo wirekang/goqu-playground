@@ -61,7 +61,7 @@
 .error {
   color: red;
   margin: 10px 35px -5px;
-  min-height: 35px;
+  min-height: 41px;
 }
 
 .loading {
