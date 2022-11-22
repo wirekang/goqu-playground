@@ -30,7 +30,7 @@ jobs:
             rm -rf cloned || echo "no cloned"
             git clone --depth 1 "https://github.com/wirekang/goqu-playground" "cloned"
             cd cloned || exit 1
-            docker compose up -d
+            NGINX_SERVER_NAME=$NGINX_SERVER_NAME docker compose up -d
             cd .. || exit 1
             rm -rf "cloned"
         env:
