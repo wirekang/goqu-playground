@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - my-net
+    restart: always
+    environment:
+      IS_PRODUCTION: "true"
+      PORT: 8080
+      GIN_MODE: release
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    networks:
+      - my-net
+    restart: always
+    volumes:
+      - type: bind
+        source: /etc/letsencrypt/live/${NGINX_SERVER_NAME}/fullchain.pem
+        target: /app/cert/fullchain.pem
+        read_only: true
+      - type: bind
+        source: /etc/letsencrypt/live/${NGINX_SERVER_NAME}/privkey.pem
+        target: /app/cert/privkey.pem
+        read_only: true
+    ports:
+      - "80:80"
+      - "443:443"
+
+networks:
+  my-net:
