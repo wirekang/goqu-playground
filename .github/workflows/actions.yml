@@ -31,7 +31,5 @@ jobs:
             git clone --depth 1 "https://github.com/wirekang/goqu-playground" "cloned"
             cd cloned || exit 1
             NGINX_SERVER_NAME=$NGINX_SERVER_NAME docker compose up -d
-            cd .. || exit 1
-            rm -rf "cloned"
         env:
           NGINX_SERVER_NAME: ${{ secrets.NGINX_SERVER_NAME }}
