@@ -11,5 +11,6 @@ COPY go.sum ./
 RUN go mod download
 COPY internal ./internal
 COPY cmd ./cmd
+COPY assets ./assets
 RUN go build -ldflags "-s -w" -o ./out ./cmd/goqu-playground-server
 CMD "./out"
