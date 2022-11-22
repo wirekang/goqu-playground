@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   api:
+    container_name: api
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,6 +14,7 @@ services:
       GIN_MODE: release
 
   nginx:
+    container_name: nginx
     build:
       context: .
       dockerfile: nginx/Dockerfile
