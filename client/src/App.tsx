@@ -37,7 +37,7 @@ export function App() {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     params.set("arg", btoa(JSON.stringify(req)));
-    window.history.pushState(
+    window.history.replaceState(
       {},
       "",
       `${window.location.pathname}?${params.toString()}`,
